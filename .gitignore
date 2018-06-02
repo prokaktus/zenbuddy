@@ -172,7 +172,7 @@ media/images/
 .lets_backup
 dumps/
 # place for builded static
-letmoney/static/build
+zenbuddy/static/build
 
 
 # ansible retry

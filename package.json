@@ -1,0 +1,39 @@
+{
+  "name": "zenbuddy",
+  "version": "0.0.1",
+  "description": "Zen catalog and other tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production",
+    "webpack": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/prokaktus/zenbuddy.git"
+  },
+  "author": "Maxim Filipenko",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/prokaktus/zenbuddy/issues"
+  },
+  "homepage": "https://github.com/prokaktus/zenbuddy#README",
+  "dependencies": {
+    "bulma": "0.7.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "autoprefixer": "^8.6.0",
+    "babel-loader": "^8.0.0-beta.3",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "postcss-loader": "^2.1.5",
+    "precss": "^3.1.2",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.0.0"
+  }
+}
