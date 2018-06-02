@@ -66,6 +66,9 @@ TEMPLATES = [
             'environment': 'zenbuddy.jinja2.environment',
             'context_processors': []
         },
+        'DIRS': [
+            os.path.join(BASE_DIR, 'zenbuddy', 'jinja2'),
+        ],
     },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

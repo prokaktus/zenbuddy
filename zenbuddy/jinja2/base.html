@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  {# TODO: Global stylesheets #}
+
+  {% block extra_css %}
+    {# Override this in templates to add extra stylesheets #}
+  {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <div>Hello!</div>
+    {% endblock %}
+</body>
+</html>
