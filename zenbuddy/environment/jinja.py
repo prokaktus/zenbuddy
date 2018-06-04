@@ -8,7 +8,7 @@ from django.urls import reverse
 from jinja2 import Environment
 
 
-def environment(**options):
+def build(**options):
     env = Environment(lstrip_blocks=True, trim_blocks=True, **options)
     env.globals.update({
         'static': staticfiles_storage.url,

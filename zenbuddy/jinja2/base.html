@@ -1,17 +1,248 @@
+{% import "macro.html" as macro %}
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  {# TODO: Global stylesheets #}
+  <meta charset="utf-8"/>
+  <title>{% block title -%}{%- endblock %}</title>
+  {{ macro.meta_tags(page) }}
+  {{ macro.favicons() }}
+  {% if canonical %}
+  <link rel="canonical" href="{{ canonical }}"/>
+  {% endif %}
+  {% block extra_link %}{% endblock %}
 
-  {% block extra_css %}
-    {# Override this in templates to add extra stylesheets #}
-  {% endblock %}
+  {# Global stylesheets #}
+
+  <link rel="stylesheet" type="text/css" href="{{static('css/bulma.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{static('build/main.bundle.css') }}">
+
+  {% block extra_css %}{% endblock %}
 </head>
+
 <body>
-    {% block content %}
-        <div>Hello!</div>
-    {% endblock %}
+{% block navbar %}
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="{{ static('img/logo.png') }}" alt="Logo">
+      </a>
+      <span class="navbar-burger burger" data-target="navbarMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="navbarMenu" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item">
+          Каталог
+        </a>
+        <a class="navbar-item">
+          Рейтинг
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Кабинет
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              Профиль
+            </a>
+            <a class="navbar-item">
+              Настройки
+            </a>
+            <hr class="navbar-divider">
+            <div class="navbar-item">
+              Выйти
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+<div class="container">
+  {% block content %}
+  <div class="card add-channel">
+    <nav class="level">
+      <div class="level-left">
+      <div class="level-item">
+        <p class="subtitle is-5">
+          <strong>123</strong> posts
+        </p>
+      </div>
+      <div class="level-item">
+        <div class="field has-addons">
+          <p class="control">
+            <input class="input" type="text" placeholder="Find a post">
+          </p>
+          <p class="control">
+            <button class="button">
+              Search
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+
+      <div class="level-right">
+      <p class="level-item"><strong>All</strong></p>
+      <p class="level-item"><a>Published</a></p>
+      <p class="level-item"><a>Drafts</a></p>
+      <p class="level-item"><a>Deleted</a></p>
+      <p class="level-item"><a class="button is-success">New</a></p>
+    </div>
+    </nav>
+  </div>
+  <!-- START ARTICLE FEED -->
+  <section class="articles">
+    <div class="column is-8 is-offset-2">
+      <!-- START ARTICLE -->
+      <div class="card article">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content has-text-centered">
+              <p class="title article-title">Introducing a new feature for paid subscribers</p>
+              <div class="tags has-addons level-item">
+                <span class="tag is-rounded is-info">@skeetskeet</span>
+                <span class="tag is-rounded">May 10, 2018</span>
+              </div>
+            </div>
+          </div>
+          <div class="content article-body">
+            <p>Non arcu risus quis varius quam quisque. Dictum varius duis at consectetur lorem. Posuere sollicitudin
+              aliquam ultrices sagittis orci a scelerisque purus semper. </p>
+            <p>Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices. In hac habitasse platea
+              dictumst vestibulum rhoncus est pellentesque elit. Accumsan lacus vel facilisis volutpat. Non sodales
+              neque sodales ut etiam.
+              Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus.</p>
+            <h3 class="has-text-centered">How to properly center tags in bulma?</h3>
+            <p> Proper centering of tags in bulma is done with class: </p>
+            <pre>level-item</pre>
+            Voluptat ut farmacium tellus in metus vulputate. Feugiat in fermentum posuere urna nec. Pharetra convallis
+            posuere morbi leo urna molestie.
+            Accumsan lacus vel facilisis volutpat est velit egestas. Fermentum leo vel orci porta. Faucibus interdum
+            posuere lorem ipsum.<p></p>
+          </div>
+        </div>
+      </div>
+      <!-- END ARTICLE -->
+      <!-- START ARTICLE -->
+      <div class="card article">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-center">
+              <img src="http://www.radfaces.com/images/avatars/daria-morgendorffer.jpg" class="author-image"
+                   alt="Placeholder image">
+            </div>
+            <div class="media-content has-text-centered">
+              <p class="title article-title">Sapien eget mi proin sed 🔱</p>
+              <p class="subtitle is-6 article-subtitle">
+                <a href="#">@daria</a> on February 17, 2018
+              </p>
+            </div>
+          </div>
+          <div class="content article-body">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Accumsan lacus vel facilisis volutpat est velit egestas. Sapien eget mi proin sed.
+              Sit amet mattis vulputate enim.
+            </p>
+            <p>
+              Commodo ullamcorper a lacus vestibulum sed arcu. Fermentum leo vel orci porta non. Proin fermentum leo
+              vel orci porta non pulvinar. Imperdiet proin fermentum leo vel. Tortor posuere ac ut consequat semper
+              viverra. Vestibulum lectus mauris ultrices eros.
+            </p>
+            <h3 class="has-text-centered">Lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi. Cras
+              tincidunt lobortis feugiat vivamus.</h3>
+            <p>
+              In eu mi bibendum neque egestas congue quisque egestas diam. Enim nec dui nunc mattis enim ut tellus. Ut
+              morbi tincidunt augue interdum velit euismod in. At in tellus integer feugiat scelerisque varius morbi
+              enim nunc. Vitae suscipit tellus mauris a diam.
+              Arcu non sodales neque sodales ut etiam sit amet.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- END ARTICLE -->
+
+      <!-- START ARTICLE -->
+      <div class="card article">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-center">
+              <img src="http://www.radfaces.com/images/avatars/angela-chase.jpg" class="author-image"
+                   alt="Placeholder image">
+            </div>
+            <div class="media-content has-text-centered">
+              <p class="title article-title">Cras tincidunt lobortis feugiat vivamus.</p>
+              <p class="subtitle is-6 article-subtitle">
+                <a href="#">@angela</a> on October 7, 2017
+              </p>
+            </div>
+          </div>
+          <div class="content article-body">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Accumsan lacus vel facilisis volutpat est velit egestas. Sapien eget mi proin sed.
+              Sit amet mattis vulputate enim.
+            </p>
+            <p>
+              Commodo ullamcorper a lacus vestibulum sed arcu. Fermentum leo vel orci porta non. Proin fermentum leo
+              vel orci porta non pulvinar. Imperdiet proin fermentum leo vel. Tortor posuere ac ut consequat semper
+              viverra. Vestibulum lectus mauris ultrices eros.
+            </p>
+            <h3 class="has-text-centered">“Everyone should be able to do one card trick, tell two jokes, and recite
+              three poems, in case they are ever trapped in an elevator.”</h3>
+            <p>
+              In eu mi bibendum neque egestas congue quisque egestas diam. Enim nec dui nunc mattis enim ut tellus. Ut
+              morbi tincidunt augue interdum velit euismod in. At in tellus integer feugiat scelerisque varius morbi
+              enim nunc. Vitae suscipit tellus mauris a diam.
+              Arcu non sodales neque sodales ut etiam sit amet.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- END ARTICLE -->
+    </div>
+  </section>
+  <!-- END ARTICLE FEED -->
+  {% endblock %}
+</div>
+{% block extra_content %}{% endblock %}
+
+<div class="updown">
+  <span class="fa fa-angle-up updown__btn--up"></span>
+</div>
+<div class="spacer-little"></div>
+<footer class="footer">
+
+</footer>
+
+{% if RAVENJS_CONFIG %}
+<script src="https://cdn.ravenjs.com/3.22.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('{{ RAVENJS_CONFIG }}').install();</script>
+{% endif %}
+<script src="{{ static('build/main.bundle.js') }}"></script>
+
+{% block extra_js %}
+{# Override this in templates to add extra javascript #}
+{% endblock %}
+
+{% block analytics %}
+{% if GOOGLE_ANALYTICS %}
+{{ GOOGLE_ANALYTICS | safe }}
+{% endif %}
+{% if YANDEX_METRICA %}
+{{ YANDEX_METRICA | safe }}
+{% endif %}
+{% if TOP_MAILRU %}
+{{ TOP_MAILRU | safe }}
+{% endif %}
+{% endblock %}
 </body>
 </html>

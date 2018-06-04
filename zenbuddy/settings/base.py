@@ -17,7 +17,8 @@ from .utils import getenv
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = dirname(dirname(dirname(os.path.abspath(__file__))))
+PROJECT_DIR = dirname(dirname(os.path.abspath(__file__)))
+BASE_DIR = dirname(PROJECT_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -63,7 +64,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'extensions': [],
-            'environment': 'zenbuddy.jinja2.environment',
+            'environment': 'zenbuddy.environment.jinja.build',
             'context_processors': []
         },
         'DIRS': [
@@ -140,5 +141,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_DIR, 'static')
+]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

@@ -12,7 +12,7 @@ const srcPath = path.resolve('frontend');
 
 const exportsModule = {
     entry: {
-        main: path.join(srcPath, 'index.js'),
+        main: path.join(srcPath, 'main.js'),
     },
     output: {
         path: path.resolve('zenbuddy', 'static', 'build'),
@@ -22,24 +22,19 @@ const exportsModule = {
         rules: [
             { 
                 test: /\.css$/,
-                // use: ExtractTextPlugin.extract({
-                //     fallback: 'style-loader',
-                //     use:
-                //         [
-                //           { 
-                //             loader: 'css-loader', 
-                //             options: { 
-                //                 importLoaders: 1,
-                //                 minimize: env === 'production' ? true : false,
-                //                 url: false
-                //             }
-                //           },
-                //           'postcss-loader'
-                //         ]
-                // })
+                include: /node_modules/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader"
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader'
                 ]
             },
             {
